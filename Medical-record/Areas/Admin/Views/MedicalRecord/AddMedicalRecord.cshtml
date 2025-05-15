@@ -1,0 +1,202 @@
+﻿@model Medical_record.Application.DTOs.MedicalRecordVM
+@{
+    ViewData["Title"] = "AddMedicalRecord";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<!-- App body starts -->
+<div class="app-body">
+    <form asp-action="AddMedicalRecord" method="post">
+    <!-- Row starts -->
+    <div class="row gx-3">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Add Patient Details</h5>
+                </div>
+                <div class="card-body">
+
+                    <!-- Row starts -->
+                    <div class="row gx-3">
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" >Full Name <span class="text-danger">*</span></label>
+                                <input  type="text" class="form-control" id="a1" placeholder="Enter Full Name">
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="PatientId">PatientID <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" asp-for="PatientId" id="a2" placeholder="Enter patientID">
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="Department">Department <span class="text-danger">*</span></label>
+                                <select class="form-select" id="a3" asp-for="Department">
+                                    <option value="0">Select department</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Row starts <div class="col-xxl-3 col-lg-4 col-sm-6">
+                              <div class="mb-3">
+                                  <label class="form-label" for="selectGender1">
+                                      Gender <span class="text-danger">*</span>
+                                  </label>
+                                  <div class="m-0">
+                                      <div class="form-check form-check-inline">
+                                          <input class="form-check-input" type="radio" name="selectGenderOptions" id="selectGender1"
+                                                 value="male">
+                                          <label class="form-check-label" for="selectGender1">Male</label>
+                                      </div>
+                                      <div class="form-check form-check-inline">
+                                          <input class="form-check-input" type="radio" name="selectGenderOptions" id="selectGender2"
+                                                 value="female">
+                                          <label class="form-check-label" for="selectGender2">Female</label>
+                                      </div>
+                                  </div>
+                              </div>
+						  </div> -->
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="AdmissionDate">Admission Date <span class="text-danger">*</span></label>
+                                <input type="date" class="form-control" id="a4" asp-for="AdmissionDate" placeholder="date">
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="DischargeDate"> Discharge Date</label>
+                                <input type="date" class="form-control" asp-for="DischargeDate" id="a5" placeholder="date">
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="Room">Room <span class="text-danger">*</span></label>
+                                <select class="form-select" asp-for="Room">
+                                    <option value="0">Select department</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="Diagnosis">Diagnsis</label>
+                                <input type="text" class="form-control" asp-for="Diagnosis" id="a1" placeholder="Enter diagnsis">
+
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="Treatment">Treatment</label>
+                                <input type="text" class="form-control" asp-for="Treatment" id="a1" placeholder="Enter treatment">
+
+                            </div>
+                        </div>
+                        <!-- Row starts  <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="a9">Blood Group <span class="text-danger">*</span></label>
+                                <select class="form-select" id="a9">
+                                    <option value="0">Select</option>
+                                    <option value="1">A+</option>
+                                    <option value="2">A-</option>
+                                    <option value="3">B+</option>
+                                    <option value="4">B-</option>
+                                    <option value="5">O+</option>
+                                    <option value="6">O-</option>
+                                    <option value="7">AB+</option>
+                                    <option value="8">AB-</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="a10">Blood Presure</label>
+                                <input type="text" class="form-control" id="a10" placeholder="Enter Blood Presure">
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="a11">Sugar</label>
+                                <input type="text" class="form-control" id="a11" placeholder="Enter Sugar Levels">
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="a12">Address</label>
+                                <input type="text" class="form-control" id="a12" placeholder="Enter Address">
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="a13">City</label>
+                                <input type="text" class="form-control" id="a13" placeholder="Enter City">
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="a14">State</label>
+                                <select class="form-select" id="a14">
+                                    <option value="0">Select</option>
+                                    <option value="1">Alabama</option>
+                                    <option value="2">Alaska</option>
+                                    <option value="3">Arizona</option>
+                                    <option value="4">California</option>
+                                    <option value="5">Florida</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="a15">Postal Code</label>
+                                <input type="text" class="form-control" id="a15" placeholder="Enter Postal Code">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div id="dropzone" class="mb-3">
+                                <form action="/upload" class="dropzone dz-clickable" id="demo-upload">
+                                    <div class="dz-message">
+                                        <button type="button" class="dz-button">
+                                            Click here to upload or Drop your reports here.
+                                        </button>
+                                        <h5>Upload your health reports.</h5>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        -->
+                        <div class="col-sm-12">
+                            <div class="d-flex gap-2 justify-content-end">
+                                <a href="patients-list.html" type="button" class="btn btn-outline-secondary">
+                                    Cancel
+                                </a>
+                                <button type="submit" class="btn btn-primary">
+                                    Create record
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Row ends -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+    <!-- Row ends -->
+
+</div>
+<!-- App body ends -->

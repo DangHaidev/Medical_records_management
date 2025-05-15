@@ -1,0 +1,110 @@
+﻿@model Medical_record.Application.DTOs.MedicalRecordVM
+@{
+    ViewData["Title"] = "EditMedicalRecord";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<!-- App body starts -->
+<div class="app-body">
+
+    <!-- Row starts -->
+    <div class="row gx-3">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Add Patient Details</h5>
+                </div>
+                <div class="card-body">
+
+                    <!-- Row starts -->
+                    <div class="row gx-3">
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="a1">Full Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="a1" placeholder="Enter Full Name">
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="a2">PatientID <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="a2" placeholder="Enter patientID">
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="a3">Department <span class="text-danger">*</span></label>
+                                <select class="form-select" id="a3">
+                                    <option value="0">Select department</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="a4">Admission Date <span class="text-danger">*</span></label>
+                                <input type="date" class="form-control" id="a4" placeholder="date">
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="a5"> Discharge Date</label>
+                                <input type="date" class="form-control" id="a5" placeholder="date">
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="a6">Room <span class="text-danger">*</span></label>
+                                <select class="form-select" id="a3">
+                                    <option value="0">Select department</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="a7">Diagnsis</label>
+                                <input type="text" class="form-control" id="a1" placeholder="Enter diagnsis">
+
+                            </div>
+                        </div>
+                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="a8">Treatment</label>
+                                <input type="text" class="form-control" id="a1" placeholder="Enter treatment">
+
+                            </div>
+                        </div>                  
+                        <div class="col-sm-12">
+                            <div class="d-flex gap-2 justify-content-end">
+                                <a href="patients-list.html" type="button" class="btn btn-outline-secondary">
+                                    Cancel
+                                </a>
+                                <a href="patients-list.html" type="button" class="btn btn-primary">
+                                    Create record
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Row ends -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Row ends -->
+
+</div>
+<!-- App body ends -->

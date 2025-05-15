@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medical-record", "Medical-record.csproj", "{75C6B866-9C67-4376-B4A4-7873F852516A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application Layer", "Application Layer", "{FBE9654B-4B93-4276-9656-A2C55075A777}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain Layer", "Domain Layer", "{4BD9DB9D-0025-4717-92B1-16DEAB936000}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure Layer", "Infrastructure Layer", "{351F86C4-680B-4454-840C-6BE47D2E0334}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User Interface Layer", "User Interface Layer", "{C5F5EB95-382A-447C-A9F1-BC16D8EC770D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical-record.Application", "..\Medical-record.Application\Medical-record.Application.csproj", "{3E2D884E-0B04-4150-A29B-87657D1B1051}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical-record.Domain", "..\Medical-record.Domain\Medical-record.Domain.csproj", "{D6A56EE5-FDCB-4153-8596-3F1981CBAEAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medical-record.Infrastructure", "..\Medical-record.Infrastructure\Medical-record.Infrastructure.csproj", "{56A4B266-6787-4781-9852-01BDE8406532}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75C6B866-9C67-4376-B4A4-7873F852516A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75C6B866-9C67-4376-B4A4-7873F852516A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75C6B866-9C67-4376-B4A4-7873F852516A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75C6B866-9C67-4376-B4A4-7873F852516A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E2D884E-0B04-4150-A29B-87657D1B1051}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E2D884E-0B04-4150-A29B-87657D1B1051}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E2D884E-0B04-4150-A29B-87657D1B1051}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E2D884E-0B04-4150-A29B-87657D1B1051}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6A56EE5-FDCB-4153-8596-3F1981CBAEAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6A56EE5-FDCB-4153-8596-3F1981CBAEAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6A56EE5-FDCB-4153-8596-3F1981CBAEAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6A56EE5-FDCB-4153-8596-3F1981CBAEAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56A4B266-6787-4781-9852-01BDE8406532}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56A4B266-6787-4781-9852-01BDE8406532}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56A4B266-6787-4781-9852-01BDE8406532}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56A4B266-6787-4781-9852-01BDE8406532}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{75C6B866-9C67-4376-B4A4-7873F852516A} = {C5F5EB95-382A-447C-A9F1-BC16D8EC770D}
+		{3E2D884E-0B04-4150-A29B-87657D1B1051} = {FBE9654B-4B93-4276-9656-A2C55075A777}
+		{D6A56EE5-FDCB-4153-8596-3F1981CBAEAB} = {4BD9DB9D-0025-4717-92B1-16DEAB936000}
+		{56A4B266-6787-4781-9852-01BDE8406532} = {351F86C4-680B-4454-840C-6BE47D2E0334}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F0156360-1E60-4354-AB21-CB25AAD60AE3}
+	EndGlobalSection
+EndGlobal

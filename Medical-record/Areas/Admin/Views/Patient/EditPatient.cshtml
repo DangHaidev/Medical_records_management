@@ -1,0 +1,138 @@
+﻿@model Medical_record.Application.DTOs.PatientVM
+@{
+    ViewData["Title"] = "EditPatient";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- App body starts -->
+<div class="app-body">
+
+    <form asp-action="EditPatient" method="post">
+        <!-- Row starts -->
+        <div class="row gx-3">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Add Patient Details</h5>
+                    </div>
+                    <div class="card-body">
+
+                        <!-- Row starts -->
+                        <div class="row gx-3">
+                            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="Name">Full Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" asp-for="Name" id="a1" placeholder="Enter Full Name">
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="CCCD">CCCD <span  class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" asp-for="CCCD" id="a2" placeholder="Enter CCCD">
+                                    <span asp-validation-for="CCCD" class="text-danger"></span>
+
+                                </div>
+                            </div>
+                            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="a3">Birth Date <span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" asp-for="BirthDate" id="a2" placeholder="Enter date">
+                                    <span asp-validation-for="BirthDate" class="text-danger"></span>
+
+
+                                </div>
+                            </div>
+                            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="Sex">
+                                        Gender <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="m-0">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="selectGenderOptions" asp-for="Sex" id="selectGender1"
+                                                   value="0">
+                                            <label class="form-check-label" for="selectGender1">Male</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="selectGenderOptions" id="selectGender2" asp-for="Sex"
+                                                   value="female">
+                                            <label class="form-check-label" for="selectGender2">Female</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="a4">Address <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" asp-for="Address" id="a4" placeholder="Address">
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+
+                                </div>
+                            </div>
+                            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="a5">Email ID <span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control" id="a5" placeholder="Enter Email ID">
+                                </div>
+                            </div>
+                            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="Phone">Mobile Number <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" asp-for="Phone" id="a6" placeholder="Enter Mobile Number">
+                                </div>
+                            </div>
+
+                            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="a8">Occupation</label>
+                                    <select class="form-select" id="a8">
+                                        <option value="0">Select</option>
+                                        <option value="1">Teacher</option>
+                                        <option value="2">Engineer</option>
+                                        <option value="3">Business</option>
+                                        <option value="4">Bank</option>
+                                        <option value="5">Army</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="a9">Blood Group <span class="text-danger">*</span></label>
+                                    <select class="form-select" asp-for="BloodType" id="a9">
+                                        <option value="0">Select</option>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="d-flex gap-2 justify-content-end">
+                                    <a href="patients-list.html" type="button" class="btn btn-outline-secondary">
+                                        Cancel
+                                    </a>
+                                    <button type="submit" class="btn btn-primary">
+                                        Update Patient Profile
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Row ends -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" asp-for="PatientId"  />
+        <!-- Row ends -->
+    </form>
+
+</div>
+<!-- App body ends -->
+
