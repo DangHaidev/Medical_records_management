@@ -56,7 +56,7 @@ namespace Medical_record.Application.Services
             var patient = _mapper.Map<Patient>(patientVM);
             await _patientRepository.AddAsync(patient);
             await _patientRepository.SaveChangesAsync();
-            await _emailSender.SendEmailAsync("dangd408@gmail.com", "Message", "Tạo profile thành công");
+            //await _emailSender.SendEmailAsync("dangd408@gmail.com", "Message", "Tạo profile thành công");
         }
 
         public async Task UpdatePatientAsync(PatientVM patientVM)

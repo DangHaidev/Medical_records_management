@@ -1,7 +1,7 @@
 ﻿@model Medical_record.Application.DTOs.PatientVM
 @{
-    ViewData["Title"] = "Databoard";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Profile";
+    Layout = "~/Areas/Client/Views/Shared/_Layout.cshtml";
 }
 
 <!-- App body starts -->
@@ -22,7 +22,7 @@
                                 </div>
                                 <div>
                                     <h4 class="mb-1">@Model.Name</h4>
-                                    <h6>CCCD : @Model.CCCD</h6>                                   
+                                    <h6>CCCD : @Model.CCCD</h6>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center">
@@ -76,7 +76,7 @@
                                 <div class="icon-box lg bg-secondary rounded-5 me-2">
                                     <i class="ri-user-location-line fs-3 text-body"></i>
                                 </div>
-                                <div >
+                                <div>
                                     <h5 class="mb-1">@Model.Address</h5>
                                     <p class="m-0">Address</p>
                                 </div>

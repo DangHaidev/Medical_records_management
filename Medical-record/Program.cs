@@ -4,6 +4,7 @@ using Medical_record.Infrastructure.Persistence;
 using Medical_record.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Medical_record.Application.Common.Mapping;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,18 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 
+// Thêm d?ch v? xác th?c và cookie
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Account/Login";     // Khi ch?a ??ng nh?p, s? redirect t?i ?ây
+        options.LogoutPath = "/Account/Logout";
+        options.AccessDeniedPath = "/Account/AccessDenied"; // N?u dùng [Authorize(Roles = "Admin")] ch?ng h?n
+    });
+
+builder.Services.AddAuthorization(); // Thêm d?ch v? ?y quy?n
+
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -46,7 +59,15 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+//moi
+app.UseAuthentication();
+
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "account", // route riêng cho Account không n?m trong Area
+    pattern: "Account/{action=Login}/{id?}",
+    defaults: new { controller = "Account" });
 
 app.MapControllerRoute(
     name: "areas",
@@ -55,7 +76,8 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
 	name: "default",
-	pattern: "{controller=Home}/{action=Index}/{id?}");
+	pattern: "{controller=Home}/{action=Index}/{id?}",
+    defaults: new { area = "Client" });
 
 
 app.Run();
