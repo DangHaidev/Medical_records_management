@@ -12,6 +12,7 @@ namespace Medical_record.Domain.Interfaces
         Task<List<Patient>> GetAllPatientsAsync();
 
         Task UpdateAsync(int id, Patient model);
+        Task<int> GetPatientIdByCCCDAsync(string CCCD);
 
     }
 }

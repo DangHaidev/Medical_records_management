@@ -17,9 +17,7 @@ namespace Medical_record.Application.Common.Mapping
             .ForMember(dest => dest.Patient, opt => opt.Ignore());
 
 
-
-
-
+        CreateMap<Employee, DoctorVM>().ReverseMap();
         }
     }
 }

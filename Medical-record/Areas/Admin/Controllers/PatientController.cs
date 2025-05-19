@@ -56,5 +56,11 @@ namespace Mediacl_record.Areas.Admin.Controllers
             }
             return View(model);
         }
+
+        public async Task<IActionResult> DeletePatient(int patientId)
+        {
+            await _patientService.DeletePatientAsync(patientId);
+            return RedirectToAction("ListPatient");
+        }
     }
 }

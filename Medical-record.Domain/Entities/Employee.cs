@@ -16,6 +16,12 @@ public partial class Employee
 
     public string? Phone { get; set; }
 
+    public string? Email { get; set; }
+
+    public DateOnly? BirthDate { get; set; }
+
+    public string? Address { get; set; }
+
     public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
 
     public virtual ICollection<Prescription> Prescriptions { get; set; } = new List<Prescription>();

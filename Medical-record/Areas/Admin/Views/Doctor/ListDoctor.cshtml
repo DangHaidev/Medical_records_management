@@ -1,9 +1,9 @@
-﻿@model IEnumerable<Medical_record.Application.DTOs.PatientVM>
-@using Medical_record.Helper
+﻿@model IEnumerable<Medical_record.Application.DTOs.DoctorVM>
 @{
-    ViewData["Title"] = "ListPatient";
+    ViewData["Title"] = "ListDoctor";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
+
 
 <!-- App body starts -->
 <div class="app-body">
@@ -13,8 +13,8 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="card-title">Patients List</h5>
-                    <a href="add-patient.html" class="btn btn-primary ms-auto">Add Patient</a>
+                    <h5 class="card-title">Doctors List</h5>
+                    <a href="add-doctors.html" class="btn btn-primary ms-auto">Add Doctor</a>
                 </div>
                 <div class="card-body">
 
@@ -23,54 +23,56 @@
                         <table id="basicExample" class="table truncate m-0 align-middle">
                             <thead>
                                 <tr>
-                                    <th>No.</th>
-                                    <th>Patient Name</th>
-                                    <th>Gender</th>
-                                    <th>Age</th>
-                                    <th>Blood Group</th>
-                                   
-                                    <th>Mobile</th>
-                                   
-                                    <th>Address</th>
+                                    <th>ID</th>
+                                    <th>Doctor Name</th>
+                                    <th>Designation</th>
+                                    <th class="text-center">Sun</th>
+                                    <th class="text-center">Mon</th>
+                                    <th class="text-center">Tue</th>
+                                    <th class="text-center">Wed</th>
+                                    <th class="text-center">Thu</th>
+                                    <th class="text-center">Fri</th>
+                                    <th class="text-center">Sat</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                               @foreach(var item in Model)
-                               {
+                                @foreach(var doctors in Model)
+                                {
                                 <tr>
-                                    <td>#89990</td>
+                                    <td>@doctors.EmployeeId</td>
                                     <td>
-                                        <img src="~/adminassets/images/patient.png" class="img-shadow img-2x rounded-5 me-1"
+                                        <img src="assets/images/user.png" class="img-shadow img-2x rounded-5 me-1"
                                              alt="Medical Admin Template">
-                                      @item.Name
+                                        @doctors.Name
                                     </td>
-                                    <td><span class="badge bg-info-subtle text-info">Male</span></td>
-                                    <td>@item.Age</td>
-                                    <td>@item.BloodType</td>
-                                   
-                                    <td>@item.Phone</td>
-                                    
-                                        <td>@StringHelper.TruncateAddress(@item.Address,20)</td>
+                                    <td>@doctors.Specialty</td>
+                                    <td class="text-center text-danger">NA</td>
+                                    <td class="text-center">9AM-2PM</td>
+                                    <td class="text-center">9AM-2PM</td>
+                                    <td class="text-center">9AM-2PM</td>
+                                    <td class="text-center">9AM-2PM</td>
+                                    <td class="text-center">9AM-2PM</td>
+                                    <td class="text-center">9AM-2PM</td>
                                     <td>
                                         <div class="d-inline-flex gap-1">
                                             <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                                        data-bs-target="#delRow" data-id="@item.PatientId"
-                                                        onclick="setDeleteId(@item.PatientId)">
+                                                        data-bs-target="#delRow" data-id="@doctors.EmployeeId"
+                                                        onclick="setDeleteId(@doctors.EmployeeId)">
                                                 <i class="ri-delete-bin-line"></i>
                                             </button>
-                                                <a asp-area="admin" asp-action="EditPatient" asp-controller="Patient" asp-route-patientId="@item.PatientId" class="btn btn-outline-success btn-sm"
-                                               data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit Patient Details">
+                                            <a asp-action="EditDoctor" asp-controller="Doctor" asp-area="admin" asp-route-EmployeeId="@doctors.EmployeeId" class="btn btn-outline-success btn-sm"
+                                               data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit Doctor Details">
                                                 <i class="ri-edit-box-line"></i>
                                             </a>
-                                            <a asp-area="admin" asp-action="Databoard" asp-controller="Patient" asp-route-patientId="@item.PatientId" class="btn btn-outline-info btn-sm"
-                                               data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View Dashboard">
+                                            <a href="doctors-profile.html" class="btn btn-outline-info btn-sm"
+                                               data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View Profile">
                                                 <i class="ri-eye-line"></i>
                                             </a>
                                         </div>
                                     </td>
                                 </tr>
-                               }
+                                }
                                 
                             </tbody>
                         </table>
@@ -80,7 +82,8 @@
                     <div class="modal fade" id="delRow" tabindex="-1" aria-labelledby="delRowLabel" aria-hidden="true">
                         <div class="modal-dialog modal-sm">
 
-                            <input type="hidden" id="deletePatientId" />
+
+                            <input type="hidden" id="deleteEmployeeId" />
 
 
                             <div class="modal-content">
@@ -91,7 +94,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    Are you sure you want to delete the patient?
+                                    Are you sure you want to delete the doctor from list?
                                 </div>
                                 <div class="modal-footer">
                                     <div class="d-flex justify-content-end gap-2">
@@ -115,15 +118,16 @@
 
 </div>
 <!-- App body ends -->
+
 <script>
     function setDeleteId(id) {
-        document.getElementById('deletePatientId').value = id;
+        document.getElementById('deleteEmployeeId').value = id;
     }
 
     function confirmDelete() {
-        var id = document.getElementById('deletePatientId').value;
+        var id = document.getElementById('deleteEmployeeId').value;
         if (id) {
-            window.location.href = '/admin/Patient/DeletePatient?PatientId=' + id;
+            window.location.href = '/admin/Doctor/DeleteDoctor?employeeId=' + id;
         }
     }
 </script>

@@ -21,11 +21,22 @@ namespace Medical_record.Infrastructure.Repositories
             return await _context.Patients.ToListAsync();
         }
 
+        public async Task<int> GetPatientIdByCCCDAsync(string CCCD)
+        {
+            var patient = await _context.Patients
+        .Where(p => p.CCCD == CCCD)
+        .FirstOrDefaultAsync();
+
+            return patient.PatientId;
+        }
+
         public async Task UpdateAsync(int patientId, Patient model)
         {
             var entity = await _dbSet.FindAsync(patientId);
             if (entity == null)
                 throw new Exception("Không tìm thấy hồ sơ");        
         }
+     
+       
     }
 }

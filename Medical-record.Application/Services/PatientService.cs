@@ -31,12 +31,14 @@ namespace Medical_record.Application.Services
         private readonly IGenericRepository<Patient> _patientRepository;
         private readonly IMapper _mapper;
         private readonly IEmailSender _emailSender;
+        private readonly IPatientRepository _cusPatientRepos;
 
-        public PatientService(IGenericRepository<Patient> patientRepository, IMapper mapper, IEmailSender emailSender)
+        public PatientService(IGenericRepository<Patient> patientRepository, IMapper mapper, IEmailSender emailSender,IPatientRepository patientRepository1)
         {
             _patientRepository = patientRepository;
             _mapper = mapper;
             _emailSender = emailSender;
+            _cusPatientRepos = patientRepository1;
         }
 
         public async Task<IEnumerable<PatientVM>> GetAllPatientsAsync()
@@ -56,7 +58,7 @@ namespace Medical_record.Application.Services
             var patient = _mapper.Map<Patient>(patientVM);
             await _patientRepository.AddAsync(patient);
             await _patientRepository.SaveChangesAsync();
-            await _emailSender.SendEmailAsync("dangd408@gmail.com", "Message", "Tạo profile thành công");
+            //await _emailSender.SendEmailAsync("dangd408@gmail.com", "Message", "Tạo profile thành công");
         }
 
         public async Task UpdatePatientAsync(PatientVM patientVM)
@@ -78,6 +80,11 @@ namespace Medical_record.Application.Services
             var patient = await _patientRepository.GetByIdAsync(PatientId);
             _patientRepository.Delete(patient);
             await _patientRepository.SaveChangesAsync();
+        }
+
+        public async Task<int> FindPatientAsync(string cccd)
+        {
+            return await _cusPatientRepos.GetPatientIdByCCCDAsync(cccd);
         }
     }
 }
