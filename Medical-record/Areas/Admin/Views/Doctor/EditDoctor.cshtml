@@ -1,0 +1,401 @@
+﻿@model Medical_record.Application.DTOs.DoctorVM
+@{
+    ViewData["Title"] = "EditDoctor";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- App body starts -->
+<div class="app-body">
+
+    <!-- Row starts -->
+    <div class="row gx-3">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <form asp-action="EditDoctor" method="post">
+                        <!-- Custom tabs starts -->
+                        <div class="custom-tabs-container">
+
+                            <!-- Nav tabs starts -->
+                            <ul class="nav nav-tabs" id="customTab2" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" id="tab-oneA" data-bs-toggle="tab" href="#oneA" role="tab"
+                                       aria-controls="oneA" aria-selected="true">
+                                        <i class="ri-briefcase-4-line"></i> Personal
+                                        Details
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="tab-twoA" data-bs-toggle="tab" href="#twoA" role="tab"
+                                       aria-controls="twoA" aria-selected="false">
+                                        <i class="ri-account-pin-circle-line"></i>
+                                        Profile and Bio
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="tab-threeA" data-bs-toggle="tab" href="#threeA" role="tab"
+                                       aria-controls="threeA" aria-selected="false">
+                                        <i class="ri-calendar-check-line"></i>
+                                        Availability
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="tab-fourA" data-bs-toggle="tab" href="#fourA" role="tab"
+                                       aria-controls="fourA" aria-selected="false">
+                                        <i class="ri-lock-password-line"></i> Account
+                                        Details
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- Nav tabs ends -->
+                            <!-- Tab content starts -->
+                            <div class="tab-content h-350">
+                                <div class="tab-pane fade show active" id="oneA" role="tabpanel">
+
+                                    <!-- Row starts -->
+                                    <div class="row gx-3">
+                                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="a1">Full Name <span class="text-danger">*</span></label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">
+                                                        <i class="ri-account-circle-line"></i>
+                                                    </span>
+                                                    <input type="text" class="form-control" id="a1" asp-for="Name" placeholder="Enter full Name">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="a2">Birth Date <span class="text-danger">*</span></label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">
+                                                        <i class="ri-account-circle-line"></i>
+                                                    </span>
+                                                    <input type="date" class="form-control" id="a2" asp-for="BirthDate">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="selectGender1">
+                                                    Gender<span class="text-danger">*</span>
+                                                </label>
+                                                <div class="m-0">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="selectGenderOptions"
+                                                               id="selectGender1" value="male">
+                                                        <label class="form-check-label" for="selectGender1">Male</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="selectGenderOptions"
+                                                               id="selectGender2" value="female">
+                                                        <label class="form-check-label" for="selectGender2">Female</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="a5">Email ID <span class="text-danger">*</span></label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">
+                                                        <i class="ri-mail-open-line"></i>
+                                                    </span>
+                                                    <input type="email" asp-for="Email" class="form-control" id="a5" placeholder="Enter Email ID">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="a6">
+                                                    Mobile Number <span class="text-danger">*</span>
+                                                </label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">
+                                                        <i class="ri-phone-line"></i>
+                                                    </span>
+                                                    <input type="text" class="form-control" id="a6" asp-for="Phone" placeholder="Enter Mobile Number">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="a8">Specialty</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">
+                                                        <i class="ri-copper-diamond-line"></i>
+                                                    </span>
+                                                    <select asp-for="Specialty" class="form-select" id="a8">
+                                                        <option value="0">Select</option>
+                                                        <option value="1">MBBS, MD</option>
+                                                        <option value="2">MBBS, MS</option>
+                                                        <option value="3">MBBS</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="a11">Address</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">
+                                                        <i class="ri-projector-line"></i>
+                                                    </span>
+                                                    <input type="text" class="form-control" id="a11" asp-for="Address" placeholder="Enter Address">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Row ends -->
+
+                                </div>
+                                <div class="tab-pane fade" id="twoA" role="tabpanel">
+
+                                    <!-- Row starts -->
+                                    <div class="row gx-3">
+                                        <div class="col-sm-2">
+                                            <div id="dropzone" class="mb-3">
+                                                <label class="form-label">Upload Profile</label>
+                                                <div action="/upload" class="dropzone dz-clickable" id="demo-upload">
+                                                    <div class="dz-message">
+                                                        <input type="file" class="dz-button">
+                                                        Click here to upload your photo.
+                                                        </input>
+                                                    </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <label class="form-label">Write Bio</label>
+                                                <div id="fullEditor">
+                                                    <h1>Hello,</h1>
+                                                    <br>
+                                                    <p>My name is <strong>Dr. David Kemrin</strong>. Write your bio here.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Row ends -->
+
+                                    </div>
+                                    <div class="tab-pane fade" id="threeA" role="tabpanel">
+
+                                        <!-- Row starts -->
+                                        <div class="row gx-3">
+                                            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="d1">Sun</label>
+                                                    <div class="input-group">
+                                                        <select class="form-select" id="d1">
+                                                            <option value="0">From</option>
+                                                            <option value="1">7AM</option>
+                                                            <option value="2">8AM</option>
+                                                            <option value="3">9AM</option>
+                                                        </select>
+                                                        <select class="form-select" id="d1X">
+                                                            <option value="0">To</option>
+                                                            <option value="1">3PM</option>
+                                                            <option value="2">4PM</option>
+                                                            <option value="3">5PM</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="d2">Mon</label>
+                                                    <div class="input-group">
+                                                        <select class="form-select" id="d2">
+                                                            <option value="0">From</option>
+                                                            <option value="1">7AM</option>
+                                                            <option value="2">8AM</option>
+                                                            <option value="3">9AM</option>
+                                                        </select>
+                                                        <select class="form-select" id="d2X">
+                                                            <option value="0">To</option>
+                                                            <option value="1">3PM</option>
+                                                            <option value="2">4PM</option>
+                                                            <option value="3">5PM</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="d3">Tue</label>
+                                                    <div class="input-group">
+                                                        <select class="form-select" id="d3">
+                                                            <option value="0">From</option>
+                                                            <option value="1">7AM</option>
+                                                            <option value="2">8AM</option>
+                                                            <option value="3">9AM</option>
+                                                        </select>
+                                                        <select class="form-select" id="d3X">
+                                                            <option value="0">To</option>
+                                                            <option value="1">3PM</option>
+                                                            <option value="2">4PM</option>
+                                                            <option value="3">5PM</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="d4">Wed</label>
+                                                    <div class="input-group">
+                                                        <select class="form-select" id="d4">
+                                                            <option value="0">From</option>
+                                                            <option value="1">7AM</option>
+                                                            <option value="2">8AM</option>
+                                                            <option value="3">9AM</option>
+                                                        </select>
+                                                        <select class="form-select" id="d4X">
+                                                            <option value="0">To</option>
+                                                            <option value="1">3PM</option>
+                                                            <option value="2">4PM</option>
+                                                            <option value="3">5PM</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="d5">Thu</label>
+                                                    <div class="input-group">
+                                                        <select class="form-select" id="d5">
+                                                            <option value="0">From</option>
+                                                            <option value="1">7AM</option>
+                                                            <option value="2">8AM</option>
+                                                            <option value="3">9AM</option>
+                                                        </select>
+                                                        <select class="form-select" id="d5X">
+                                                            <option value="0">To</option>
+                                                            <option value="1">3PM</option>
+                                                            <option value="2">4PM</option>
+                                                            <option value="3">5PM</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="d6">Fri</label>
+                                                    <div class="input-group">
+                                                        <select class="form-select" id="d6">
+                                                            <option value="0">From</option>
+                                                            <option value="1">7AM</option>
+                                                            <option value="2">8AM</option>
+                                                            <option value="3">9AM</option>
+                                                        </select>
+                                                        <select class="form-select" id="d6X">
+                                                            <option value="0">To</option>
+                                                            <option value="1">3PM</option>
+                                                            <option value="2">4PM</option>
+                                                            <option value="3">5PM</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="d7">Sat</label>
+                                                    <div class="input-group">
+                                                        <select class="form-select" id="d7">
+                                                            <option value="0">From</option>
+                                                            <option value="1">7AM</option>
+                                                            <option value="2">8AM</option>
+                                                            <option value="3">9AM</option>
+                                                        </select>
+                                                        <select class="form-select" id="d7X">
+                                                            <option value="0">To</option>
+                                                            <option value="1">3PM</option>
+                                                            <option value="2">4PM</option>
+                                                            <option value="3">5PM</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Row ends -->
+
+                                    </div>
+                                    <div class="tab-pane fade" id="fourA" role="tabpanel">
+
+                                        <!-- Row starts -->
+                                        <div class="row gx-3">
+                                            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="u1">User Name</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">
+                                                            <i class="ri-account-pin-circle-line"></i>
+                                                        </span>
+                                                        <input type="text" id="u1" placeholder="Enter username" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="u2">Password</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">
+                                                            <i class="ri-lock-password-line"></i>
+                                                        </span>
+                                                        <input type="password" id="u2" class="form-control"
+                                                               placeholder="Password must be 8-20 characters long.">
+                                                        <button class="btn btn-outline-secondary" type="button">
+                                                            <i class="ri-eye-line"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xxl-3 col-lg-4 col-sm-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="u3">Confirm Password</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">
+                                                            <i class="ri-lock-password-line"></i>
+                                                        </span>
+                                                        <input type="password" id="u3" placeholder="Confirm new password"
+                                                               class="form-control">
+                                                        <button class="btn btn-outline-secondary" type="button">
+                                                            <i class="ri-eye-off-line"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Row ends -->
+
+                                    </div>
+                                </div>
+                                <!-- Tab content ends -->
+
+                            </div>
+                            <input type="hidden" asp-for="Role" value="Doctor" />
+                            <input type="hidden" asp-for="@Model.EmployeeId"  />
+                            <!-- Custom tabs ends -->
+                            <!-- Card acrions starts -->
+                            <div class="d-flex gap-2 justify-content-end mt-4">
+                                <a href="doctors-list.html" class="btn btn-outline-secondary">
+                                    Cancel
+                                </a>
+                                <button type="submit" class="btn btn-primary">
+                                    Create Doctor Profile
+                                </button>
+                            </div>
+                            <!-- Card acrions ends -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Row ends -->
+
+</div>
+<!-- App body ends -->

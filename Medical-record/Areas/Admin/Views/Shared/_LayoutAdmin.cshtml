@@ -405,7 +405,7 @@
                                     <a href="doctor-dashboard.html">Doctors Dashboard</a>
                                 </li>
                                 <li>
-                                    <a href="doctors-list.html">Doctors List</a>
+                                    <a asp-controller="Doctor" asp-action="ListDoctor" asp-area="Admin">Doctors List</a>
                                 </li>
                                 <li>
                                     <a href="doctors-cards.html">Doctors Cards</a>
@@ -414,10 +414,10 @@
                                     <a href="doctors-profile.html">Doctors Profile</a>
                                 </li>
                                 <li>
-                                    <a href="add-doctors.html">Add Doctor</a>
+                                    <a asp-action="AddDoctor" asp-area="admin" asp-controller="Doctor">Add Doctor</a>
                                 </li>
                                 <li>
-                                    <a href="edit-doctors.html">Edit Doctor</a>
+                                    <a asp-action="EditDoctor" asp-controller="Doctor" asp-area="admin">Edit Doctor</a>
                                 </li>
                             </ul>
                         </li>

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -82,7 +83,7 @@
                     <a asp-controller="Home" asp-action="About"  class="nav-item nav-link">About</a>
                     <a asp-controller="Home" asp-action="Service" class="nav-item nav-link">Service</a>                  
                     <a asp-controller="Home" asp-action="Contact" class="nav-item nav-link">Contact</a>
-                    <a asp-controller="Home" asp-action="Profile" class="nav-item nav-link">Profile</a>
+                    <a asp-controller="Home" asp-action="Profile" asp-route-cccd="@User.FindFirst(System.Security.Claims.ClaimTypes.Name)?.Value" class="nav-item nav-link">Profile</a>
                 </div>
                 <a asp-controller="Home" asp-action="Appointment" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Appointment<i class="fa fa-arrow-right ms-3"></i></a>
             </div>

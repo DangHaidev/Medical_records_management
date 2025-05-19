@@ -14,7 +14,11 @@ public partial class Appointment
 
     public DateTime? AppointmentDate { get; set; }
 
+    public TimeOnly? AppointmentTime { get; set; } = new TimeOnly();
+
     public string? AppointmentType { get; set; }
+
+    public string? AppointmentDescription { get; set; }
 
     public string? Status { get; set; }
 

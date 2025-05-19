@@ -12,6 +12,7 @@ namespace Mediacl_record.Areas.Client.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly PatientService _patientService;
+        
 
         public HomeController(ILogger<HomeController> logger, PatientService patientService)
         {
@@ -48,8 +49,9 @@ namespace Mediacl_record.Areas.Client.Controllers
             return View();
         }
         [Authorize(Roles = "Client")]
-        public async Task<IActionResult> ProfileAsync(int patientId)
+        public async Task<IActionResult> ProfileAsync(string cccd)
         {
+            var patientId = await _patientService.FindPatientAsync(cccd);
             var patient = await _patientService.GetPatientByIdAsync(patientId);
             return View(patient);
         }

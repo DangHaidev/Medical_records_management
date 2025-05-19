@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using Medical_record.Application.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -6,6 +7,11 @@ using System.Security.Claims;
 
 public class AccountController : Controller
 {
+    private readonly PatientService _patientService;
+    public AccountController(PatientService patientService)
+    {
+        _patientService = patientService;
+    }
     [HttpGet]
     public IActionResult Login()
     {
@@ -22,7 +28,7 @@ public class AccountController : Controller
         {
             role = "Admin";
         }
-        else if (username == "user" && password == "123")
+        else if (username == "040204015708" && password == "123")
         {
             role = "Client";
         }
@@ -39,7 +45,7 @@ public class AccountController : Controller
 
             var authProperties = new AuthenticationProperties
             {
-                IsPersistent = true
+                IsPersistent = false
             };
 
             await HttpContext.SignInAsync(
@@ -50,7 +56,10 @@ public class AccountController : Controller
             // Redirect tùy theo quyền
             //if (role == "Admin")
             //    return RedirectToAction("index", "Home", new { area = "Admin" });
-                return RedirectToAction("Profile", "Home", new { area = "Client" });
+            //var patientId = await _patientService.FindPatientAsync(username);
+                return RedirectToAction("Profile", "Home", new { area = "Client", username });
+            
+
         }
 
         ViewBag.Error = "Sai tài khoản hoặc mật khẩu";
