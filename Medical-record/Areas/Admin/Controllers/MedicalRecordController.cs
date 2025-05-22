@@ -12,7 +12,7 @@ namespace Mediacl_record.Areas.Admin.Controllers
         {
             _recordService = recordService;
         }
-        public async Task<IActionResult> DetailMedicalRecordAsync(string RecordId)
+        public async Task<IActionResult> DetailMedicalRecord(int RecordId)
         {
             var patient = await _recordService.GetRecordByIdAsync(RecordId);
             return View(patient);
@@ -37,10 +37,16 @@ namespace Mediacl_record.Areas.Admin.Controllers
             }
             return View(model);
         }
-        public async Task<IActionResult> EditMedicalRecord(string RecordId)
+        public async Task<IActionResult> EditMedicalRecord(int RecordId)
         {
             var patient = await _recordService.GetRecordByIdAsync(RecordId);
             return View(patient);
+        }
+
+        public async Task<IActionResult> DeleteRecord(int RecordId)
+        {
+            await _recordService.DeleteRecordAsync(RecordId);
+            return RedirectToAction("ListMedicalRecord");
         }
     }
 }

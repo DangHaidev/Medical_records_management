@@ -13,14 +13,17 @@ public class AccountController : Controller
         _patientService = patientService;
     }
     [HttpGet]
-    public IActionResult Login()
+    public IActionResult Login(string? ReturnUrl)
     {
+        ViewBag.ReturnUrl = ReturnUrl;
         return View();
     }
 
     [HttpPost]
-    public async Task<IActionResult> Login(string username, string password)
+    public async Task<IActionResult> Login(string username, string password,string? ReturnUrl)
     {
+        //await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
         // Giả lập kiểm tra tài khoản
         string role = null;
 
@@ -57,8 +60,16 @@ public class AccountController : Controller
             //if (role == "Admin")
             //    return RedirectToAction("index", "Home", new { area = "Admin" });
             //var patientId = await _patientService.FindPatientAsync(username);
-                return RedirectToAction("Profile", "Home", new { area = "Client", username });
-            
+            return RedirectToAction("Profile", "Home", new { area = "Client", cccd = username });
+            //if (Url.IsLocalUrl(ReturnUrl))
+            //{
+            //    return Redirect(ReturnUrl);
+            //}
+            //else
+            //{
+            //    return Redirect("/");
+            //}
+
 
         }
 
@@ -70,6 +81,6 @@ public class AccountController : Controller
     public async Task<IActionResult> Logout()
     {
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-        return RedirectToAction("Login", "Account");
+        return RedirectToAction("index", "Home");
     }
 }

@@ -1,9 +1,12 @@
 using Mediacl_record.Models;
+using Medical_record.Application.DTOs;
 using Medical_record.Application.Services;
 using Medical_record.Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Diagnostics;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Mediacl_record.Areas.Client.Controllers
 {
@@ -12,19 +15,26 @@ namespace Mediacl_record.Areas.Client.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly PatientService _patientService;
+        private readonly DoctorSevice _doctorSevice;
         
 
-        public HomeController(ILogger<HomeController> logger, PatientService patientService)
+        public HomeController(ILogger<HomeController> logger, PatientService patientService, DoctorSevice doctorSevice)
         {
             _logger = logger;
-            _patientService = patientService;   
+            _patientService = patientService;  
+            _doctorSevice = doctorSevice;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+			var doctors = await _doctorSevice.GetAllDoctorsAsync();
+			ViewBag.ListDoctors = doctors.Select(p => new
+			{
+				p.EmployeeId,
+				p.Name
+			});
+			return View();
         }
-
 
         public IActionResult About()
         {
@@ -36,11 +46,10 @@ namespace Mediacl_record.Areas.Client.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        public IActionResult Appointment()
-        {
-            return View();
-        }
-        public IActionResult Contact()
+		
+
+
+		public IActionResult Contact()
         {
             return View();
         }

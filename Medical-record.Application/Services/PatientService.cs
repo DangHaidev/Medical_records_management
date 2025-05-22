@@ -29,16 +29,18 @@ namespace Medical_record.Application.Services
     public class PatientService
     {
         private readonly IGenericRepository<Patient> _patientRepository;
+        private readonly IGenericRepository<MedicalRecord> _medicalRecordRepository;
         private readonly IMapper _mapper;
         private readonly IEmailSender _emailSender;
         private readonly IPatientRepository _cusPatientRepos;
 
-        public PatientService(IGenericRepository<Patient> patientRepository, IMapper mapper, IEmailSender emailSender,IPatientRepository patientRepository1)
+        public PatientService(IGenericRepository<Patient> patientRepository, IMapper mapper, IEmailSender emailSender,IPatientRepository patientRepository1, IGenericRepository<MedicalRecord> medicalRecordRepository)
         {
             _patientRepository = patientRepository;
             _mapper = mapper;
             _emailSender = emailSender;
             _cusPatientRepos = patientRepository1;
+            _medicalRecordRepository = medicalRecordRepository;
         }
 
         public async Task<IEnumerable<PatientVM>> GetAllPatientsAsync()
@@ -77,6 +79,11 @@ namespace Medical_record.Application.Services
 
         public async Task DeletePatientAsync(int PatientId)
         {
+            var relatedRecords = await _medicalRecordRepository
+       .FindAllAsync(r => r.PatientId == PatientId);
+
+            _medicalRecordRepository.DeleteRange(relatedRecords);
+
             var patient = await _patientRepository.GetByIdAsync(PatientId);
             _patientRepository.Delete(patient);
             await _patientRepository.SaveChangesAsync();
@@ -86,5 +93,13 @@ namespace Medical_record.Application.Services
         {
             return await _cusPatientRepos.GetPatientIdByCCCDAsync(cccd);
         }
+
+        public async Task<bool> IsCCCDExistedAsync(string cccd)
+        {
+            var existing = await _patientRepository.FindAsync(p => p.CCCD == cccd);
+            return existing != null;
+        }
+
+
     }
 }

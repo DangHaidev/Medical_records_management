@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Medical_record.Application.DTOs.AppointmentVM>
+
+@{
+    int i = 1;
+}
+
+
+<table class="table align-middle truncate m-0">
+    <thead>
+        <tr>
+            <th>#</th>
+           
+            <th>Doctor</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach(var item in Model)
+        {
+        <tr>
+            <td>@i</td>
+            <td>
+                <h6 href="#!" class="text-truncate">
+                    @item.EmployeeName
+                </h6>
+            </td>
+                <td>@item.AppointmentDate?.ToString("dd/MM/yyyy")</td>
+            <td>@item.AppointmentTime</td>
+            <td>
+                <div class="d-inline-flex gap-1">
+                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delRow">
+                        <i class="ri-delete-bin-line"></i>
+                    </button>
+                    <button class="btn btn-info btn-sm" data-bs-toggle="tooltip" data-bs-placement="top"
+                            data-bs-title="Download Report">
+                        <i class="ri-file-download-line"></i>
+                    </button>
+                </div>
+            </td>
+            </tr>
+            i++;
+        }
+    </tbody>
+</table>

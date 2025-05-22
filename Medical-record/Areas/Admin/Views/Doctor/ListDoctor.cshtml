@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "ListDoctor";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    int i = 1;
 }
 
 
@@ -25,7 +26,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Doctor Name</th>
-                                    <th>Designation</th>
+                                    <th>Special</th>
                                     <th class="text-center">Sun</th>
                                     <th class="text-center">Mon</th>
                                     <th class="text-center">Tue</th>
@@ -42,9 +43,9 @@
                                 <tr>
                                     <td>@doctors.EmployeeId</td>
                                     <td>
-                                        <img src="assets/images/user.png" class="img-shadow img-2x rounded-5 me-1"
+                                            <img src="~/adminassets/images/@($"user{i}.png")" class="img-shadow img-2x rounded-5 me-1"
                                              alt="Medical Admin Template">
-                                        @doctors.Name
+                                        @doctors.Name 
                                     </td>
                                     <td>@doctors.Specialty</td>
                                     <td class="text-center text-danger">NA</td>
@@ -71,7 +72,8 @@
                                             </a>
                                         </div>
                                     </td>
-                                </tr>
+                                    </tr>
+                                    i++;
                                 }
                                 
                             </tbody>

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Medical_record.Application.DTOs.AppointmentVM>
+@{
+    ViewData["Title"] = "ListAppointment";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    int i = 1;
+}
+
+<!-- App body starts -->
+<div class="app-body">
+
+    <!-- Row starts -->
+    <div class="row gx-3">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <h5 class="card-title">Applointments List</h5>
+                    <a href="book-appointment.html" class="btn btn-primary ms-auto">Book Appointment</a>
+                </div>
+                <div class="card-body">
+
+                    <!-- Table starts -->
+                    <div class="table-responsive">
+                        <table id="appointmentsGrid" class="table m-0 align-middle">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Patient Name</th>
+                                   
+                                    <th>Consulting Doctor</th>
+                                    <th>Department</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                   
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                   
+                                    <tr>
+                                        <td>@i</td>
+                                        <td>
+                                            @item.PatientName
+                                        </td>
+                                       
+                                        <td>
+                                            <img src="~/adminassets/images/@($"user{i}.png")" class="img-shadow img-2x rounded-5 me-1"
+                                            alt="Hospital Admin Template"> @item.EmployeeName
+                                        </td>
+                                        <td>@item.Specialty</td>
+                                        <td>@item.AppointmentDate</td>
+                                        <td>@item.AppointmentTime</td>
+                                      
+                                        <td>
+                                            <div class="d-inline-flex gap-1">
+                                                <button class="btn btn-success btn-sm" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                data-bs-title="Accepted">
+                                                    <i class="ri-checkbox-circle-line"></i>
+                                                </button>
+                                                <button class="btn btn-outline-danger btn-sm" data-bs-toggle="tooltip"
+                                                data-bs-placement="top" data-bs-title="Reject" disabled>
+                                                    <i class="ri-close-circle-line"></i>
+                                                </button>
+                                                <a href="edit-appointment.html" class="btn btn-outline-success btn-sm"
+                                                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit Appointment">
+                                                    <i class="ri-edit-box-line"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    i++;
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Table ends -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Row ends -->
+
+</div>
+<!-- App body ends -->
+

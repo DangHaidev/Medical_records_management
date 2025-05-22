@@ -14,7 +14,14 @@ namespace Medical_record.Domain.Interfaces
         Task AddAsync(T entity);
         void Update(T entity);
         void Delete(T entity);
-        Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate);
-        Task SaveChangesAsync();      
+        Task<T> FindAsync(Expression<Func<T, bool>> predicate);
+
+        Task SaveChangesAsync();
+        void DeleteRange(IEnumerable<T> entities);
+
+        Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> predicate);
+
+        
+
     }
 }

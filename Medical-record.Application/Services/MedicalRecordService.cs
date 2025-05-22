@@ -30,10 +30,11 @@ namespace Medical_record.Application.Services
             return _mapper.Map<IEnumerable<MedicalRecordVM>>(records);
         }
 
-        public async Task<MedicalRecordVM> GetRecordByIdAsync(string PatientId)
+        public async Task<MedicalRecordVM> GetRecordByIdAsync(int PatientId)
         {
-            var record = await _patientRepository.GetByIdAsync(PatientId);
+            var record = await _recordRepository.GetByRecordIdWithPatientAsync(PatientId);
             return _mapper.Map<MedicalRecordVM>(record);
+            //return _mapper.Map<MedicalRecordVM>(record);
         }
 
         public async Task AddRecordAsync(MedicalRecordVM MedicalRecordVM)
@@ -61,6 +62,13 @@ namespace Medical_record.Application.Services
         {
            var records = await _recordRepository.GetAllWithPatientsAsync();
             return _mapper.Map<IEnumerable<MedicalRecordVM>>(records);
+        }
+
+
+        public async Task<MedicalRecordVM?> GetMedicalRecordDetailAsync(int recordId)
+        {
+            var record = await _recordRepository.GetMedicalRecordWithPatientAsync(recordId);
+            return _mapper.Map<MedicalRecordVM>(record);
         }
 
     }

@@ -33,6 +33,7 @@
             <form asp-action="Login" method="post">
 
                 <div class="auth-box">
+                    <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
                     <a href="index.html" class="auth-logo mb-4">
                         <img src="~/assets/images/logo-dark.svg" alt="Bootstrap Gallery">
                     </a>

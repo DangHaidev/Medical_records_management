@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Medical_record.Application.DTOs.DoctorVisitVM>
+
+
+
+
+<table class="table align-middle truncate m-0">
+    <thead>
+        <tr>
+            <th>Doctor</th>
+            <th>Date</th>
+            <th>Department</th>
+            <th>Reports</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/assets/images/user1.png" class="img-3x rounded-2" alt="Medical Dashboard" style="width:50px"> @item.DoctorName
+                </td>
+                <td>@item.Date</td>
+                <td>
+                    @item.DoctorSpecial
+                </td>
+                <td>
+                    <div class="d-inline-flex gap-1">
+                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#viewReportsModal1">
+                            View Reports
+                        </button>
+                        <button class="btn btn-info btn-sm" data-bs-toggle="tooltip" data-bs-placement="top"
+                        data-bs-title="Download Report">
+                            <i class="ri-file-download-line"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

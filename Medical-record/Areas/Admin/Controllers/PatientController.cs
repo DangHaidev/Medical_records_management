@@ -33,6 +33,12 @@ namespace Mediacl_record.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddPatient(PatientVM model)
         {
+
+            if (await _patientService.IsCCCDExistedAsync(model.CCCD))
+            {
+                ModelState.AddModelError("CCCD", "CCCD đã tồn tại trong hệ thống.");
+            }
+
             if (ModelState.IsValid)
             {
                 await _patientService.AddPatientAsync(model);
@@ -62,5 +68,7 @@ namespace Mediacl_record.Areas.Admin.Controllers
             await _patientService.DeletePatientAsync(patientId);
             return RedirectToAction("ListPatient");
         }
+
+       
     }
 }

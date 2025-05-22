@@ -18,6 +18,18 @@ namespace Medical_record.Application.Common.Mapping
 
 
         CreateMap<Employee, DoctorVM>().ReverseMap();
+        CreateMap<Appointment, AppointmentVM>().ReverseMap();
+            CreateMap<PhieuKhamBenh, DoctorVisitVM>().ReverseMap();
+            CreateMap<PhieuKhamBenh, DoctorVisitVM>()
+                    .ForMember(dest => dest.DoctorName, opt => opt.MapFrom(src => src.Employee.Name))
+                    .ForMember(dest => dest.DoctorSpecial, opt => opt.MapFrom(src => src.Employee.Specialty));
+
+
+
+            CreateMap<Appointment, AppointmentVM>()
+   .ForMember(dest => dest.PatientName, opt => opt.MapFrom(src => src.Patient.Name))
+   .ForMember(dest => dest.EmployeeName, opt => opt.MapFrom(src => src.Employee.Name))
+   .ForMember(dest => dest.Specialty, opt => opt.MapFrom(src => src.Employee.Specialty));
         }
     }
 }

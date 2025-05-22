@@ -46,14 +46,25 @@ namespace Medical_record.Infrastructure.Repositories
                 _dbSet.Remove(entity);
             }
 
-            public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
+            public async Task<T> FindAsync(Expression<Func<T, bool>> predicate)
             {
-                return await _dbSet.Where(predicate).ToListAsync();
-            }
+            return await _dbSet.FirstOrDefaultAsync(predicate);
+        }
 
             public async Task SaveChangesAsync()
             {
                 await _context.SaveChangesAsync();
             }
+
+        public void DeleteRange(IEnumerable<T> entities)
+        {
+            _dbSet.RemoveRange(entities);
         }
+
+        public async Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _dbSet.Where(predicate).ToListAsync();
+        }
+
+    }
 }

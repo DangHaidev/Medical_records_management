@@ -23,5 +23,20 @@ namespace Medical_record.Infrastructure.Repositories
                           .Include(m => m.Patient)
                           .ToListAsync();
         }
+
+        public async Task<MedicalRecord> GetByRecordIdWithPatientAsync(int recordId)
+        {
+            return await _context.MedicalRecords
+       .Include(r => r.Patient)
+       .FirstOrDefaultAsync(r => r.RecordId == recordId);
+        }
+
+        public async Task<MedicalRecord?> GetMedicalRecordWithPatientAsync(int recordId)
+        {
+            return await _context.MedicalRecords
+                .Include(m => m.Patient) // 👈 lấy thông tin bệnh nhân
+                .FirstOrDefaultAsync(m => m.RecordId == recordId);
+        }
+
     }
 }

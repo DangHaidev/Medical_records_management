@@ -11,5 +11,10 @@ namespace Medical_record.Domain.Interfaces
     {
         Task<List<MedicalRecord>> GetAllWithPatientsAsync();
 
+        Task<MedicalRecord?> GetMedicalRecordWithPatientAsync(int recordId);
+
+        Task<MedicalRecord> GetByRecordIdWithPatientAsync(int recordId);
+
+
     }
 }

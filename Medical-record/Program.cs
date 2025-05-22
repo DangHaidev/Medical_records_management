@@ -13,8 +13,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<Service>();
 builder.Services.AddScoped<PatientService>();
 builder.Services.AddScoped<DoctorSevice>();
+builder.Services.AddScoped<PhieuKhamBenhService>();
 builder.Services.AddScoped<IPatientRepository, PatientRepository>();
+builder.Services.AddScoped<IPhieuKhamBenhRepository, PhieuKhamBenhRepository>();
 builder.Services.AddScoped<IMedicalRecordRepository, MedicalRecordRepository>();
+builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
 
 builder.Services.AddScoped<MedicalRecordService>();

@@ -18,7 +18,7 @@ namespace Medical_record.Application.DTOs
 
         public string? Phone { get; set; }
 
-        public string? Photo { get; set; }
+        public string? Photo { get; set; } = "patient4.png";
 
         public bool Sex { get; set; }
         public string? BloodType { get; set; } = "null";

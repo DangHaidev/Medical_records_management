@@ -19,29 +19,19 @@
                     <div class="row gx-3">
                         <div class="col-xxl-3 col-lg-4 col-sm-6">
                             <div class="mb-3">
-                                <label class="form-label" >Full Name <span class="text-danger">*</span></label>
-                                <input  type="text" class="form-control" id="a1" placeholder="Enter Full Name">
-                            </div>
-                        </div>
-                        <div class="col-xxl-3 col-lg-4 col-sm-6">
-                            <div class="mb-3">
                                 <label class="form-label" asp-for="PatientId">PatientID <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" asp-for="PatientId" id="a2" placeholder="Enter patientID">
+                                <input type="text" class="form-control" asp-for="PatientId" id="a2" placeholder="Enter patientID" required>
                             </div>
                         </div>
                         <div class="col-xxl-3 col-lg-4 col-sm-6">
                             <div class="mb-3">
                                 <label class="form-label" asp-for="Department">Department <span class="text-danger">*</span></label>
-                                <select class="form-select" id="a3" asp-for="Department">
-                                    <option value="0">Select department</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
+                                <select class="form-select" id="a3" asp-for="Department" required>
+                                        <option value="Emergency Department">Emergency Department</option>
+                                        <option value="Cardiology ">Cardiology </option>
+                                        <option value="Neurology ">Neurology </option>
+                                        <option value="Pediatrics ">Pediatrics </option>
+                                        <option value="Dermatology">Dermatology</option>
                                 </select>
                             </div>
                         </div>
@@ -67,7 +57,7 @@
                         <div class="col-xxl-3 col-lg-4 col-sm-6">
                             <div class="mb-3">
                                 <label class="form-label" asp-for="AdmissionDate">Admission Date <span class="text-danger">*</span></label>
-                                <input type="date" class="form-control" id="a4" asp-for="AdmissionDate" placeholder="date">
+                                <input type="date" class="form-control" id="a4" asp-for="AdmissionDate" placeholder="date" required>
                             </div>
                         </div>
                         <div class="col-xxl-3 col-lg-4 col-sm-6">
@@ -79,7 +69,7 @@
                         <div class="col-xxl-3 col-lg-4 col-sm-6">
                             <div class="mb-3">
                                 <label class="form-label" asp-for="Room">Room <span class="text-danger">*</span></label>
-                                <select class="form-select" asp-for="Room">
+                                <select class="form-select" asp-for="Room" required>
                                     <option value="0">Select department</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>

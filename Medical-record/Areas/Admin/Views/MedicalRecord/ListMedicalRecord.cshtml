@@ -62,14 +62,15 @@
                                         <td>
                                             <div class="d-inline-flex gap-1">
                                                 <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                                        data-bs-target="#delRow">
+                                                        data-bs-target="#delRow" data-id="@item.RecordId"
+                                                        onclick="setDeleteId(@item.RecordId)">
                                                     <i class="ri-delete-bin-line"></i>
                                                 </button>
                                                 <a asp-area="admin" asp-action="EditMedicalRecord" asp-controller="MedicalRecord" asp-route-patientId="@item.RecordId" class="btn btn-outline-success btn-sm"
                                                    data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Edit Record Details">
                                                     <i class="ri-edit-box-line"></i>
                                                 </a>
-                                                <a asp-area="admin" asp-action="DetailMedicalRecord" asp-controller="MedicalRecord" asp-route-patientId="@item.RecordId" class="btn btn-outline-info btn-sm"
+                                                <a asp-area="admin" asp-action="DetailMedicalRecord" asp-controller="MedicalRecord" asp-route-RecordId="@item.RecordId" class="btn btn-outline-info btn-sm"
                                                    data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="View Dashboard">
                                                     <i class="ri-eye-line"></i>
                                                 </a>
@@ -87,6 +88,10 @@
                     <div class="modal fade" id="delRow" tabindex="-1" aria-labelledby="delRowLabel" aria-hidden="true">
                         <div class="modal-dialog modal-sm">
                             <div class="modal-content">
+
+                                                            <input type="hidden" id="deletePatientId" />
+
+
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="delRowLabel">
                                         Confirm
@@ -102,7 +107,7 @@
                                                 aria-label="Close">
                                             No
                                         </button>
-                                        <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Yes</button>
+                                        <button class="btn btn-danger" data-bs-dismiss="modal" onclick="confirmDelete()">Yes</button>
                                     </div>
                                 </div>
                             </div>
@@ -117,3 +122,17 @@
 
 </div>
 <!-- App body ends -->
+
+
+<script>
+    function setDeleteId(id) {
+        document.getElementById('deletePatientId').value = id;
+    }
+
+    function confirmDelete() {
+        var id = document.getElementById('deletePatientId').value;
+        if (id) {
+            window.location.href = '/admin/MedicalRecord/DeleteRecord?RecordId=' + id;
+        }
+    }
+</script>
